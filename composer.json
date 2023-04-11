@@ -2,7 +2,7 @@
     "name": "imafaz/easylog",
     "description": "A lightweight PHP logger.",
     "type": "library",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "keywords": [
         "imafaz",
