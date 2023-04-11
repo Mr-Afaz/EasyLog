@@ -1,7 +1,5 @@
 <?php
-
-error_reporting(0);
-ini_set('display_errors', 0);
+namespace EasyLog;
 
 /*
 *  Logger.php module
@@ -29,7 +27,8 @@ ini_set('display_errors', 0);
 
 
 
-namespace EasyLog;
+error_reporting(0);
+ini_set('display_errors', 0);
 
 
 class Logger
