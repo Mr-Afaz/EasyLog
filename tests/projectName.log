@@ -1,3 +1,10 @@
-[2023-04-10 22:23:15] [ERROR] An error occurred!
-[2023-04-10 22:23:15] [WARNING] This is a warning!
-[2023-04-10 22:23:15] [INFO] Some information for you!
+[26-Oct-2023 21:32:01 UTC] [DEBUG] This is a debug message.
+[26-Oct-2023 21:32:01 UTC] [INFO] This is an informational message.
+[26-Oct-2023 21:32:01 UTC] [WARNING] This is a warning message.
+[26-Oct-2023 21:32:01 UTC] [ERROR] This is an error message.
+[26-Oct-2023 21:32:01 UTC] PHP Fatal error:  Uncaught Exception: This is a fatal message. in C:\Users\mrafaz\Desktop\EasyLog\src\Logger.php:97
+Stack trace:
+#0 C:\Users\mrafaz\Desktop\EasyLog\src\Logger.php(163): EasyLog\Logger->logging()
+#1 C:\Users\mrafaz\Desktop\EasyLog\tests\usage.php(18): EasyLog\Logger->fatal()
+#2 {main}
+  thrown in C:\Users\mrafaz\Desktop\EasyLog\src\Logger.php on line 97

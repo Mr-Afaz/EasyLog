@@ -2,7 +2,7 @@
     "name": "imafaz/easylog",
     "description": "EasyLog is a lightweight logger library for PHP, which allows developers to easily log messages at different levels such as error, warning, and info.",
     "type": "library",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "license": "MIT",
     "keywords": [
         "imafaz",
@@ -12,9 +12,9 @@
         "php logging",
         "lightweight php logger"
     ],
-       "autoload": {
+    "autoload": {
         "psr-4": {
-            "EasyLog\\": "src"
+            "imafaz\\EasyLog\\": "src"
         }
     },
     "homepage": "https://github.com/imafaz/EasyLog",
@@ -28,6 +28,5 @@
     "require": {
         "php-64bit": ">=7.1"
     },
-
     "minimum-stability": "stable"
 }
