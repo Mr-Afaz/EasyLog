@@ -1,4 +1,4 @@
-# very php lightweight logger
+# lightweight php Logger
 
 lightweight logger library for PHP, which allows developers to easily log messages at different levels such as debug, info, warning, error, and fatal.
 ---
