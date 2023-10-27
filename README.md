@@ -1,36 +1,90 @@
-# php lightweight logger
-### This is a lightweight logger library for PHP, which allows developers to easily log messages at different levels such as error, warning, and info.
+# very php lightweight logger
+
+lightweight logger library for PHP, which allows developers to easily log messages at different levels such as debug, info, warning, error, and fatal.
+---
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [License](#license)
+
+---
+
+## Requirements
+
+This library is supported by **PHP versions 7.0** or higher
 
 ## Installation
-- You can install the library using composer or by cloning this repository:
-- Using Composer: `composer require imafaz/EasyLog`
-- Using git: `git clone https://github.com/imafaz/EasyLog.git`
+
+The preferred way to install this extension is through [Composer](http://getcomposer.org/download/).
+
+To install **Easylog**, simply:
+
+    $ composer require imafaz/EasyLog
+
+The previous command will only install the necessary files, if you prefer to **download the entire source code** you can use:
+
+    $ composer require imafaz/EasyLog --prefer-source
+
+You can also **clone the complete repository** with Git:
+
+    $ git clone https://github.com/imafaz/EasyLog.git
+
+Or **install it manually**:
+
+[Download Logger.php](https://raw.githubusercontent.com/imafaz/EasyLog/main/src/Logger.php):
+
+    $ wget https://raw.githubusercontent.com/imafaz/EasyLog/main/src/Logger.php
+
+
+## Quick Start
+
+To use this library with **Composer**:
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+
+use EasyLog\Logger;
+```
+
+Or If you installed it **manually**, use it:
+
+```php
+require_once __DIR__ . '/Logger.php';
+use EasyLog\Logger;
+```
+
 
 ## Usage
-- Using Composer
-- If you're using composer autoload, you first need to include it in your PHP script. For example, if your vendor directory is in the root of your project, you would use: <br>
-`require_once __DIR__ . '/vendor/autoload.php';`
-- Using Git
-- If you have cloned this repository from git, you can include the Logger class like this: <br>
-`require_once '/path/to/EasyLog/Logger.php';`<br>
 
-- Then import the Logger class into your PHP script: <br>
-`use EasyLog\Logger;`<br>
-- Create an instance of Logger: <br>
-`$logger = new Logger('/path/to/log/file.log');`<br
-- You can log messages at different levels using the following methods:<br>
+Create an instance of Logger
+```php
+$logger = new Logger('/path/to/file.log');
+```
 
-- log an error message: 
-`$logger->error('An error has occurred.');`
+logging messages at different levels using the following methods:
+```php
+// debug message:
+$log->debug('This is a debug message.');
 
-- log a warning message: 
-`$logger->warning('A warning message.');`
+// info message:
+$log->info('This is an informational message.');
 
-- log an info message: 
-`$logger->info('An info message.');`
+// warning message:
+$log->warning('This is a warning message.');
 
-- By default, the log messages will be written to the specified file. If you want to print the messages on the screen as well, you can pass the second parameter as true when creating the logger instance:
-`$logger = new Logger('/path/to/log/file.log', true);`
+// error message:
+$log->error('This is an error message.');
+
+// fatal exception:
+$log->fatal('This is a fatal message.');
+```
+
+By default, the log messages will be written to the specified file. If you want to print the messages on the screen as well, you can pass the second parameter as true when creating the logger instance:
+```php
+$logger = new Logger('/path/to/file.log', true);
+```
 
 # License
 - This script is licensed under the [MIT License](https://opensource.org/licenses/MIT).
