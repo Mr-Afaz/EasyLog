@@ -66,19 +66,19 @@ $logger = new Logger('/path/to/file.log');
 logging messages at different levels using the following methods:
 ```php
 // debug message:
-$log->debug('This is a debug message.');
+$logger->debug('This is a debug message.');
 
 // info message:
-$log->info('This is an informational message.');
+$logger->info('This is an informational message.');
 
 // warning message:
-$log->warning('This is a warning message.');
+$logger->warning('This is a warning message.');
 
 // error message:
-$log->error('This is an error message.');
+$logger->error('This is an error message.');
 
 // fatal exception:
-$log->fatal('This is a fatal message.');
+$logger->fatal('This is a fatal message.');
 ```
 
 By default, the log messages will be written to the specified file. If you want to print the messages on the screen as well, you can pass the second parameter as true when creating the logger instance:
