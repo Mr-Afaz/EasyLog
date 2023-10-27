@@ -5,14 +5,30 @@ require_once('..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Logger.
 use EasyLog\Logger;
 
 // create a new logger with the file name "projectName.log"
-$log = new Logger('projectName.log', true);
+$logger = new Logger('projectName.log');
 
-$log->debug('This is a debug message.');
+$logger->debug('This is a debug message.');
 
-$log->info('This is an informational message.');
+$logger->info('This is an informational message.');
 
-$log->warning('This is a warning message.');
+$logger->warning('This is a warning message.');
 
-$log->error('This is an error message.');
+$logger->error('This is an error message.');
 
-$log->fatal('This is a fatal message.');
+// $logger->fatal('This is a fatal message.');
+
+// change log file
+$logger->logFile = 'changedFile.log';
+
+// print log
+$logger->printLog = true;
+
+$logger->debug('This is a debug message.');
+
+$logger->info('This is an informational message.');
+
+$logger->warning('This is a warning message.');
+
+$logger->error('This is an error message.');
+
+$logger->fatal('This is a fatal message.');
