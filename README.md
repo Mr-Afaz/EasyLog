@@ -85,6 +85,10 @@ By default, the log messages will be written to the specified file. If you want 
 ```php
 $logger = new Logger('/path/to/file.log', true);
 ```
-
+You can change logFile or printLog whenever you need:
+```php
+$logger->printLog = true;
+$logger->logFile = 'custom.log';
+```
 # License
 - This script is licensed under the [MIT License](https://opensource.org/licenses/MIT).
