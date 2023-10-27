@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 /**
  * This is a lightweight logger library for PHP, which allows developers to easily log messages at different levels such as error, warning, and info.
@@ -11,9 +13,6 @@
  * @license https://opensource.org/licenses/MIT
  * @link https://github.com/imafaz/neili
  */
-
-
-declare(strict_types=1);
 
 namespace EasyLog;
 
@@ -72,6 +71,26 @@ class Logger
         }
     }
 
+
+    /**
+     * setup logger property
+     *
+     * @param string $property
+     * @param string $value
+     * @return void
+     */
+    public function __set($property, $value)
+    {
+        if ($property == 'printLog') {
+            $this->printLog = $value;
+        } elseif ($property == 'logFile') {
+            $this->logFile = $value;
+            if (function_exists('ini_set')) {
+                ini_set('log_errors', '1');
+                ini_set('error_log', $this->logFile);
+            }
+        }
+    }
 
 
     /**
