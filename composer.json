@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "imafaz\\EasyLog\\": "src"
+            "EasyLog\\": "src/"
         }
     },
     "homepage": "https://github.com/imafaz/EasyLog",
