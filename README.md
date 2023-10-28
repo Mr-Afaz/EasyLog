@@ -23,10 +23,6 @@ To install **Easylog**, simply:
 
     $ composer require imafaz/EasyLog
 
-The previous command will only install the necessary files, if you prefer to **download the entire source code** you can use:
-
-    $ composer require imafaz/EasyLog --prefer-source
-
 You can also **clone the complete repository** with Git:
 
     $ git clone https://github.com/imafaz/EasyLog.git
