@@ -66,8 +66,7 @@ class Logger
         $this->printLog = $printLog;
         $this->logFile = $logFile;
         if (function_exists('ini_set')) {
-            ini_set('log_errors', '1');
-            ini_set('error_log', $logFile);
+            ini_set('log_errors', true);
         }
     }
 
