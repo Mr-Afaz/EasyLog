@@ -1,23 +1,34 @@
 <?php
 
+
 declare(strict_types=1);
 
-
 /**
- * This is a lightweight logger library for PHP, which allows developers to easily log messages at different levels such as error, warning, and info.
- *
- * @version 1.0.0
- * @author Mr Afaz
- * @package neili
- * @copyright Copyright 2023 Neili library
+ * @version 1.0.2
+ * @author MrAfaz abolfazlmajidi100@gmail.com
+ * @package EasyLog
  * @license https://opensource.org/licenses/MIT
- * @link https://github.com/imafaz/neili
+ * @link https://github.com/imafaz/ٍEasyLog
+ * 
  */
+
 
 namespace EasyLog;
 
 use Exception;
+use DateTime;
 
+/**
+ * Logger
+ * @method __construct(string $logFile, bool $printLog = false)
+ * @method logging(string $message, int $level): void
+ * @method debug(string $message): void
+ * @method info(string $message): void
+ * @method warning(string $message): void
+ * @method error(string $message): void
+ * @method fatal(string $message): void
+ * 
+ */
 class Logger
 {
 
@@ -33,98 +44,77 @@ class Logger
     const ERROR = 4;
     const FATAL = 5;
 
-
-
-
-
     /**
      * logFile
      *
-     * @var mixed
+     * @var string
      */
-    private $logFile;
-
+    private string $logFile;
 
 
     /**
      * printLog
      *
-     * @var mixed
+     * @var bool
      */
-    public $printLog;
+    private bool $printLog;
 
 
+
+  
     /**
-     * __construct: setup logger
+     * __construct
      *
-     * @param  mixed $logFile
-     * @param  mixed $printLog
+     * @param  string $logFile
+     * @param  bool $printLog
      * @return void
      */
     public function __construct(string $logFile, bool $printLog = false)
     {
-        $this->printLog = $printLog;
         $this->logFile = $logFile;
+        $this->printLog = $printLog;
         if (function_exists('ini_set')) {
             ini_set('log_errors', true);
         }
     }
 
 
+    
     /**
-     * setup logger property
+     * logging
      *
-     * @param string $property
-     * @param string $value
-     * @return void
-     */
-    public function __set($property, $value)
-    {
-        if ($property == 'printLog') {
-            $this->printLog = $value;
-        } elseif ($property == 'logFile') {
-            $this->logFile = $value;
-            if (function_exists('ini_set')) {
-                ini_set('log_errors', '1');
-                ini_set('error_log', $this->logFile);
-            }
-        }
-    }
-
-
-    /**
-     * writing/print log
-     *
-     * @param string $message
-     * @param int $level
+     * @param  string $message
+     * @param  int $level
      * @return void
      */
     private function logging(string $message, int $level): void
     {
-        $date = gmdate('d-M-Y H:i:s \U\T\C');
-        if ($level == self::DEBUG) {
-            $log = sprintf("[%s] [%s] %s\n", $date, 'DEBUG', $message);
-        } elseif ($level == self::INFO) {
-            $log = sprintf("[%s] [%s] %s\n", $date, 'INFO', $message);
-        } elseif ($level == self::WARNING) {
-            $log = sprintf("[%s] [%s] %s\n", $date, 'WARNING', $message);
-        } elseif ($level == self::ERROR) {
-            $log = sprintf("[%s] [%s] %s\n", $date, 'ERROR', $message);
-        } elseif ($level == self::FATAL) {
-            $log = sprintf("[%s] [%s] %s\n", $date, 'FATAL ERROR', $message);
-            throw new Exception($message);
-        } else {
-            throw new Exception('invalid level type!');
-        }
+        $date = (new DateTime())->format('d-M-Y H:i:s \U\T\C');
+        $levelString = match ($level) {
+            self::DEBUG => 'DEBUG',
+            self::INFO => 'INFO',
+            self::WARNING => 'WARNING',
+            self::ERROR => 'ERROR',
+            self::FATAL => 'FATAL ERROR',
+            default => throw new Exception('Invalid level type!')
+        };
+
+        $log = sprintf("[%s] [%s] %s\n", $date, $levelString, $message);
+
         if ($this->printLog) {
             print($log);
         }
-        file_put_contents($this->logFile, $log, FILE_APPEND);
+
+        file_put_contents($this->logFile, $log, FILE_APPEND | LOCK_EX);
+
+        if ($level === self::FATAL) {
+            throw new Exception($message);
+        }
     }
 
-
+    
     /**
-     * logging debug
+     * debug
      *
      * @param  string $message
      * @return void
@@ -136,8 +126,9 @@ class Logger
 
 
 
+    
     /**
-     * logging info
+     * info
      *
      * @param  string $message
      * @return void
@@ -147,8 +138,10 @@ class Logger
         $this->logging($message, self::INFO);
     }
 
+
+    
     /**
-     * logging warning
+     * warning
      *
      * @param  string $message
      * @return void
@@ -159,8 +152,9 @@ class Logger
     }
 
 
+   
     /**
-     * logging error
+     * error
      *
      * @param  string $message
      * @return void
@@ -170,8 +164,9 @@ class Logger
         $this->logging($message, self::ERROR);
     }
 
+
     /**
-     * fatal error
+     * fatal
      *
      * @param  string $message
      * @return void

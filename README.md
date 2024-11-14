@@ -1,90 +1,65 @@
-# lightweight php Logger
+# EasyLog
+EasyLog is a PHP library designed for logging messages at different levels such as debug, info, warning, error, and fatal. It provides an easy-to-use interface for developers to manage log messages effectively.
 
-lightweight logger library for PHP, which allows developers to easily log messages at different levels such as debug, info, warning, error, and fatal.
 ---
 
+- [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Quick Start](#quick-start)
 - [Usage](#usage)
+- [Example](#example)
+- [Available Methods](#available-methods)
 - [License](#license)
 
 ---
 
-## Requirements
+## Features
+- Supports multiple log levels: debug, info, warning, error, and fatal.
+- Option to print log messages to the screen.
+- Customizable log file location.
 
-This library is supported by **PHP versions 7.0** or higher
+## Requirements
+- PHP 7.0 or higher
 
 ## Installation
+You can install EasyLog using Composer. Run the following command in your terminal:
 
-The preferred way to install this extension is through [Composer](http://getcomposer.org/download/).
+```bash
+composer require imafaz/EasyLog
+```
 
-To install **Easylog**, simply:
+## Usage
+To use the EasyLog library, you need to create an instance of the Logger class. Below is an example of how to use it.
 
-    $ composer require imafaz/EasyLog
-
-You can also **clone the complete repository** with Git:
-
-    $ git clone https://github.com/imafaz/EasyLog.git
-
-Or **install it manually**:
-
-[Download Logger.php](https://raw.githubusercontent.com/imafaz/EasyLog/main/src/Logger.php):
-
-    $ wget https://raw.githubusercontent.com/imafaz/EasyLog/main/src/Logger.php
-
-
-## Quick Start
-
-To use this library with **Composer**:
-
+### Example
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
 use EasyLog\Logger;
-```
 
-Or If you installed it **manually**, use it:
-
-```php
-require_once __DIR__ . '/Logger.php';
-use EasyLog\Logger;
-```
-
-
-## Usage
-
-Create an instance of Logger
-```php
+// Create an instance of Logger
 $logger = new Logger('/path/to/file.log');
-```
 
-logging messages at different levels using the following methods:
-```php
-// debug message:
+// Logging messages at different levels
 $logger->debug('This is a debug message.');
-
-// info message:
 $logger->info('This is an informational message.');
-
-// warning message:
 $logger->warning('This is a warning message.');
-
-// error message:
 $logger->error('This is an error message.');
-
-// fatal exception:
 $logger->fatal('This is a fatal message.');
-```
 
-By default, the log messages will be written to the specified file. If you want to print the messages on the screen as well, you can pass the second parameter as true when creating the logger instance:
-```php
+// To print messages on the screen as well
 $logger = new Logger('/path/to/file.log', true);
 ```
-You can change logFile or printLog whenever you need:
-```php
-$logger->printLog = true;
-$logger->logFile = 'custom.log';
-```
-# License
-- This script is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Available Methods
+### Logger Class Methods
+- `__construct(string $logFile, bool $printLog = false)`: Initializes the Logger with the specified log file and print option.
+- `debug(string $message)`: Logs a debug message.
+- `info(string $message)`: Logs an informational message.
+- `warning(string $message)`: Logs a warning message.
+- `error(string $message)`: Logs an error message.
+- `fatal(string $message)`: Logs a fatal error message and throws an exception.
+
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/imafaz/EasyLog/blob/main/LICENSE) file for details.
